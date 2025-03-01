@@ -13,6 +13,6 @@ public interface EnseignementClient {
 
     @GetMapping("/enseignements")
     List<Enseignement> getAllEnseignements();
-    @GetMapping("enseignaments/{id}/nom")
-    String getNom(@PathVariable Long id);
+    @GetMapping("enseignaments/{id}/info")
+    List<String> getInfo(@PathVariable Long id);
 }
