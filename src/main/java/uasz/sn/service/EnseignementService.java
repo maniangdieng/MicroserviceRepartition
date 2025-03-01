@@ -47,7 +47,11 @@ public class EnseignementService {
 
 
     public void save(Enseignement enseignement){
+
+        List<String> info = enseignementClient.getInfo(enseignement.getId());
+        enseignement.setNom(info.get(0));enseignement.setSemetre(info.get(1));enseignement.setNiveau(info.get(2));enseignement.setFormation(info.get(3));
         enseignementRepository.save(enseignement);
+
     }
     public String findNomById(Long id){
         return enseignementClient.getNom(id);
