@@ -56,7 +56,7 @@ public class RepartitionController {
         // Si la repartition existe déjà, renvoyer un message avec un code HTTP 409 (Conflict)
         if(repartitionExisting != null){
             return ResponseEntity.status(HttpStatus.CONFLICT)
-                    .body("L'enseignant a déjà fait ce choix");  // Message d'erreur
+                    .body("L'enseignant a déjà fait le choix");  // Message d'erreur
         }
 
         Repartition repartition = repartitionService.findById(id);
@@ -113,4 +113,18 @@ public class RepartitionController {
         return ResponseEntity.ok(repartition1);
     }
 
+    @GetMapping("/{id}/infos")
+    public ResponseEntity<?> getInfo(@PathVariable Long id){
+        Repartition repartition = repartitionService.findById(id);
+        if(repartition == null){
+            return ResponseEntity.status(HttpStatus.CONFLICT)
+                    .body("repartition null");
+        }
+        String enseignement = repartition.getEnseignement().getNom() +'('+repartition.getEnseignement().getNiveau()+") semestre(" + repartition.getEnseignement().getSemestre()+')';
+        String enseignant = repartition.getEnseignant().getPrenom() +' '+repartition.getEnseignant().getNom();
+        String type = repartition.getType();
+        List<String> infos = new ArrayList<>();
+        infos.add(enseignement);infos.add(enseignant);infos.add(type);
+        return ResponseEntity.ok(infos);
+    }
 }
