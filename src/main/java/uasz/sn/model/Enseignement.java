@@ -14,8 +14,10 @@ public class Enseignement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    String nom;
-    String maquettee;
+    private String nom;
+    private String semestre;
+    private String niveau;
+    private String formation;
     @ManyToMany(mappedBy = "enseignements",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Enseignant> enseignants = new ArrayList<>();
 }
