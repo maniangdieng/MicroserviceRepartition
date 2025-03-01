@@ -56,7 +56,7 @@ public class RepartitionController {
         // Si la repartition existe déjà, renvoyer un message avec un code HTTP 409 (Conflict)
         if(repartitionExisting != null){
             return ResponseEntity.status(HttpStatus.CONFLICT)
-                    .body("L'enseignant a déjà fait le choix");  // Message d'erreur
+                    .body("L'enseignant a déjà fait ce choix");  // Message d'erreur
         }
 
         Repartition repartition = repartitionService.findById(id);
