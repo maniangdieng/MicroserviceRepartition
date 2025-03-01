@@ -14,9 +14,6 @@ public interface EnseignantClient {
     @GetMapping("/enseignants")
     List<Enseignant> getEnseignant();
 
-    @GetMapping("/{id}/prenom")
-    String getPrenom(@PathVariable Long id);
-
-    @GetMapping("/{id}/nom")
-    String getNom(@PathVariable Long id);
+    @GetMapping("/{id}/info")
+    List<String> getInfo(@PathVariable Long id);
 }
