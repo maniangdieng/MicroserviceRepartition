@@ -22,13 +22,12 @@ public class EnseignantService {
     public List<Enseignant> getAll(){
         return enseignantClient.getEnseignant();
     }
-    public String findPrenomById(Long id){
-        return enseignantClient.getPrenom(id);
-    }
-    public String findByNom(Long id){
-        return enseignantClient.getNom(id);
-    }
     public void save(Enseignant enseignant){
+
+        List<String> infos = enseignantClient.getInfo(enseignant.getId());
+        enseignant.setNom(infos.get(0));
+        enseignant.setPrenom(infos.get(1));
         enseignantRepository.save(enseignant);
+
     }
 }
