@@ -3,7 +3,7 @@ package uasz.sn.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uasz.sn.model.Enseignement;
-import uasz.sn.model.EnseignementClient;
+//import uasz.sn.model.EnseignementClient;
 import uasz.sn.repository.EnseignementRepository;
 
 import java.util.ArrayList;
@@ -13,11 +13,12 @@ import java.util.stream.Collectors;
 
 @Service
 public class EnseignementService {
-    @Autowired
+    /*@Autowired
     private EnseignementClient enseignementClient;
+    */
     @Autowired
     private EnseignementRepository enseignementRepository;
-
+/*
     public Enseignement findById(Long id){
         return enseignementClient.getEnseignement(id);
     }
@@ -44,13 +45,23 @@ public class EnseignementService {
         // Retourner la liste mise à jour des enseignements
         return enseignementRepository.findAll();
     }
+*/
 
-
-    public void save(Enseignement enseignement){
-
+  /*  public void save(Enseignement enseignement) {
+        // Récupérer les informations depuis le service externe
         List<String> info = enseignementClient.getInfo(enseignement.getId());
-        enseignement.setNom(info.get(0));enseignement.setSemestre(info.get(1));enseignement.setNiveau(info.get(2));enseignement.setFormation(info.get(3));
-        enseignementRepository.save(enseignement);
 
+        // Définir les champs de l'objet Enseignement en utilisant la liste info
+        enseignement.setNom(info.get(0));      // Définir le nom
+        enseignement.setSemestre(info.get(1)); // Définir le semestre
+        enseignement.setNiveau(info.get(2));   // Définir le niveau
+        enseignement.setFormation(info.get(3));// Définir la formation
+
+        // Sauvegarder l'objet Enseignement dans le repository
+        enseignementRepository.save(enseignement);
+    }*/
+
+    public  void save(Enseignement enseignement){
+        enseignementRepository.save(enseignement);
     }
 }
