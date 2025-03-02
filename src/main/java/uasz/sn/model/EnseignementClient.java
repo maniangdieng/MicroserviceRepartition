@@ -1,5 +1,5 @@
 package uasz.sn.model;
-
+/*
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +13,7 @@ public interface EnseignementClient {
 
     @GetMapping("/enseignements")
     List<Enseignement> getAllEnseignements();
-    @GetMapping("enseignaments/{id}/info")
+
+    @GetMapping("/enseignements/{id}/info")
     List<String> getInfo(@PathVariable Long id);
-}
+}*/
